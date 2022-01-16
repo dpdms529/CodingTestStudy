@@ -38,9 +38,9 @@ int main() {
 		}
 	}
 	cout << pq.size() << endl;
-	while(!pq.empty()) {
-		cout << pq.top() << " ";
-		pq.pop();
-	}
+	// while(!pq.empty()) {
+	// 	cout << pq.top() << " ";
+	// 	pq.pop();
+	// }
 	return 0;
 }
