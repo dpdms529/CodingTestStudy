@@ -7,11 +7,10 @@ public class p7576 {
 	public static int graph[][];
 	public static int dx[] = {0,0,-1,1};
 	public static int dy[] = {-1,1,0,0};
-	public static ArrayList<int[]> cnt = new ArrayList<>();
+	public static ArrayList<int[]> start = new ArrayList<>();
+	public static Queue<int[]> q = new LinkedList<>();
 	
 	public static int bfs(int i, int j) {
-		Queue<int[]> q = new LinkedList<>();
-		q.offer(new int[] {i,j});
 		int y = -1, x = -1;
 		while(!q.isEmpty()) {
 			int p[] = q.poll();
@@ -37,29 +36,35 @@ public class p7576 {
 		m = Integer.parseInt(st.nextToken());
 		n = Integer.parseInt(st.nextToken());
 		graph = new int[n][m];
+		int result = -1;
 		
 		for(int i = 0;i<n;i++) {
 			st = new StringTokenizer(br.readLine());
 			for(int j = 0;j<m;j++) {
 				graph[i][j] = Integer.parseInt(st.nextToken());
-				if(graph[i][j] == 1) cnt.add(new int[] {i,j,0});
+				if(graph[i][j] == 1) start.add(new int[] {i,j,0});
 			}
 		}
 		
-		for(int i = 0;i<cnt.size();i++) {
-			int y = cnt.get(i)[0];
-			int x = cnt.get(i)[1];
-			int count = bfs(y,x);
-			System.out.println(y + " " + x + " " + count);
-		}
-		System.out.println();
-		for(int i = 0;i<n;i++) {
-			for(int j = 0;j<m;j++) {
-				System.out.print(graph[i][j] + " ");
+		if(start.size()>0) {
+			for(int i = 0;i<start.size();i++) {
+				int y = start.get(i)[0];
+				int x = start.get(i)[1];
+				q.offer(new int[] {y,x});
 			}
-			System.out.println();
+			result = bfs(start.get(0)[0], start.get(0)[1]) - 1;	
 		}
 
+		loop: for(int i = 0;i<n;i++) {
+			for(int j = 0; j<m;j++) {
+				if(graph[i][j]==0) {
+					result = -1;
+					break loop; 
+				}
+			}
+		}
+
+		System.out.println(result);
 	}
 
 }
