@@ -5,6 +5,7 @@ using namespace std;
 bool cmp(pair <int, int> a, pair<int, int> b) {
 	return a.first > b.first;
 }
+
 bool cmp_second(pair <int, int> a, pair<int, int> b) {
 	return a.second > b.second;
 }

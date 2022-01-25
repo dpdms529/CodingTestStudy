@@ -3,11 +3,13 @@
 using namespace std;
 
 bool cmp(pair <int, int> a, pair<int, int> b) {
-	// if(a.second == b.second) {
-	// 	return a.first > b.first;
-	// }
+	if(a.first == b.first) {
+		return a.second < b.second;
+	}
 	return a.first > b.first;
 }
+
+bool check[10004];
 
 int main() {
 	ios_base :: sync_with_stdio(false);
@@ -24,24 +26,19 @@ int main() {
 	}
 	sort(v.begin(), v.end(), cmp);
 
-	int day = v[0].second;
-	int income = v[0].first;
+	int income = 0;
 
-	for(int i=1;i<n;i++) {
-		if(day >= v[i].second) {
-			continue;
-		}
-		else {
-			income += v[i].first;
-			day = v[i].second;
+	for(int i=0;i<v.size();i++) {
+		for(int j=v[i].second;j>0;j--) {
+			if(!check[j]) {
+				income += v[i].first;
+				check[j] = true;
+				break;
+			}
 		}
 	}
 
-	// cout << income;
-
-	for(int i=0;i<n;i++) {
-		cout << v[i].first << ' ' << v[i].second << '\n';
-	}
+	cout << income;
 
 
 	return 0;
