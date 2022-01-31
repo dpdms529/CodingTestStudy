@@ -2,11 +2,13 @@
 
 import sys
 
+# 입력
 s, c = map(int, sys.stdin.readline().split())
 l = [int(sys.stdin.readline()) for _ in range(s)]
 
-start = 1
-end = max(l)
+# 과정
+start = 1   # 1부터 시작
+end = max(l)    # 최대값을 end로 설정
 while start <= end:
     mid = (start + end) // 2
     count = 0
@@ -14,7 +16,7 @@ while start <= end:
     for x in l:
         count += x // mid
         # rest += x % mid
-    if count >= c:
+    if count >= c:  # 나눠줘야 할 양보다 크거나 같으면 결과값 저장
         start = mid + 1
         result = mid
         # result = rest
