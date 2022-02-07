@@ -52,24 +52,6 @@ int main() {
 
 		cout << cnt << '\n';
 
-		// int cnt = 0;
-		// for(int j=0;j<m;j++) {
-		// 	cout << j << '\n';
-		// 	int start = 0, end = n;
-		// 	int result = 0;
-		// 	while(start <= end) {
-		// 		int mid = (start + end) / 2;
-		// 		if(a[mid] > b[j]) {
-		// 			end = mid - 1;
-		// 			result = mid;
-		// 		} else {
-		// 			start = mid + 1;
-		// 		}
-		// 	}
-		// 	cnt += result+1;
-		// 	cout << cnt << '\n';
-		// }
-
 	}
 
 	return 0;
