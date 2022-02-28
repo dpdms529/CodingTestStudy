@@ -2,19 +2,19 @@ import java.util.Scanner;
 
 public class p1717 {
 
-    // ³ëµåÀÇ °³¼ö(V)¿Í °£¼±(Union ¿¬»ê)ÀÇ °³¼ö(E)
-    // ³ëµåÀÇ °³¼ö´Â ÃÖ´ë 100,000°³¶ó°í °¡Á¤
+    // ë…¸ë“œì˜ ê°œìˆ˜(V)ì™€ ê°„ì„ (Union ì—°ì‚°)ì˜ ê°œìˆ˜(E)
+    // ë…¸ë“œì˜ ê°œìˆ˜ëŠ” ìµœëŒ€ 1,000,000ê°œë¼ê³  ê°€ì •
     public static int n, m;
-    public static int[] parent = new int[1000001]; // ºÎ¸ğ Å×ÀÌºí ÃÊ±âÈ­ÇÏ±â
+    public static int[] parent = new int[1000001]; // ë¶€ëª¨ í…Œì´ë¸” ì´ˆê¸°í™”í•˜ê¸°
 
-    // Æ¯Á¤ ¿ø¼Ò°¡ ¼ÓÇÑ ÁıÇÕÀ» Ã£±â
+    // íŠ¹ì • ì›ì†Œê°€ ì†í•œ ì§‘í•©ì„ ì°¾ê¸°
     public static int findParent(int x) {
-        // ·çÆ® ³ëµå°¡ ¾Æ´Ï¶ó¸é, ·çÆ® ³ëµå¸¦ Ã£À» ¶§±îÁö Àç±ÍÀûÀ¸·Î È£Ãâ
+        // ë£¨íŠ¸ ë…¸ë“œê°€ ì•„ë‹ˆë¼ë©´, ë£¨íŠ¸ ë…¸ë“œë¥¼ ì°¾ì„ ë•Œê¹Œì§€ ì¬ê·€ì ìœ¼ë¡œ í˜¸ì¶œ
         if (x == parent[x]) return x;
         return parent[x] = findParent(parent[x]);
     }
 
-    // µÎ ¿ø¼Ò°¡ ¼ÓÇÑ ÁıÇÕÀ» ÇÕÄ¡±â
+    // ë‘ ì›ì†Œê°€ ì†í•œ ì§‘í•©ì„ í•©ì¹˜ê¸°
     public static void unionParent(int a, int b) {
         a = findParent(a);
         b = findParent(b);
@@ -28,7 +28,7 @@ public class p1717 {
         n = sc.nextInt();
         m = sc.nextInt();
 
-        // ºÎ¸ğ Å×ÀÌºí»ó¿¡¼­, ºÎ¸ğ¸¦ ÀÚ±â ÀÚ½ÅÀ¸·Î ÃÊ±âÈ­
+        // ë¶€ëª¨ í…Œì´ë¸”ìƒì—ì„œ, ë¶€ëª¨ë¥¼ ìê¸° ìì‹ ìœ¼ë¡œ ì´ˆê¸°í™”
         for (int i = 1; i <= n; i++) {
             parent[i] = i;
         }
